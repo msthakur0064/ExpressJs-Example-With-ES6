@@ -1,8 +1,11 @@
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 
-import config from "../../config/config.js";
 import {apiFailureHandler} from '../helpers/global.helper.js';
+import config from "../../config/config.js";
+import configuredDB from '../../config/database.js';
+
+const {Users} = configuredDB;
 
 /**
  * encode password
@@ -70,15 +73,28 @@ export async function verifyJwtToken(req, res, next) {
             return apiFailureHandler(res, 401, 'Token is empty. Format for Authorization: Bearer [token].');
         }
 
-        await jwt.verify(token, config.jwt.secretKey, (err, user) => {
+        await jwt.verify(token, config.jwt.secretKey, async (err, user) => {
             if (err) {
                 return apiFailureHandler(res, 403, err.message);
             }
 
             if (user.id && Number.isInteger(parseInt(user.id))) {
-                req.userId = user.id;
-                req.user = user;
-                next();
+                // check user is valid or not
+                await Users.findOne({
+                    where: {
+                        id: user.id
+                    },
+                    attributes: {exclude: ['salt', 'password']},
+                    raw: true
+                }).then((result) => {
+                    if (result) {
+                        req.userId = user.id;
+                        req.user = result;
+                        next();
+                    } else {
+                        return apiFailureHandler(res, 400, 'Token is invalid.');
+                    }
+                });
 
             } else {
                 return apiFailureHandler(res, 400, 'Token is invalid.');
