@@ -7,6 +7,6 @@ const userController = new UserController();
 
 router.get('/', userController.getUser);
 router.put('/', userController.updateUser);
-// router.delete('/delete', userController.deleteUser);
+router.delete('/', userController.deleteUser);
 
 export default router;
