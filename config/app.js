@@ -2,8 +2,8 @@ import express from 'express';
 import httpError from 'http-errors';
 import bodyParser from 'body-parser';
 
-import routes from '../routes/index.route.js';
-import {apiFailureHandler} from '../app/helpers/globalFunction.js';
+import routes from '../app/routes/index.route.js';
+import {apiFailureHandler} from '../app/helpers/global.helper.js';
 
 const app = express();
 
@@ -17,21 +17,21 @@ app.use('/api/v1/', routes);
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     const err = new httpError(404);
-    res.send(apiFailureHandler(404, err.message, {}), 404);
+    return apiFailureHandler(res, 404, err.message, {});
 });
 
-app.use((err, req, res, next) => {
-    try {
-        res.header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
-        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        res.header('Content-Type', 'application/json; charset=utf-8');
-
-        res.status(err.status || 500).send(apiFailureHandler(null, {}, err.status || 500));
-        next();
-    } catch (error) {
-        res.status(err.status || 500).send(apiFailureHandler(error.message, {}, err.status || 500));
-        next(error.message);
-    }
-});
+// app.use((err, req, res, next) => {
+//     try {
+//         res.header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
+//         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//         res.header('Content-Type', 'application/json; charset=utf-8');
+//
+//         return apiFailureHandler(res, err.status || 500, err.message || '');
+//         next();
+//     } catch (error) {
+//         return apiFailureHandler(res, 500, error);
+//         next(error.message);
+//     }
+// });
 
 export default app;

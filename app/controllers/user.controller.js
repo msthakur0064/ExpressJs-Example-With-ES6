@@ -1,47 +1,73 @@
-import {apiSuccessHandler, apiFailureHandler} from '../helpers/globalFunction.js';
+import {apiSuccessHandler, apiFailureHandler} from '../helpers/global.helper.js';
 import configuredDB from '../../config/database.js';
 
 const {Users} = configuredDB;
 
 /**
- * get users data
- *
- * @param req
- * @param res
+ * user controller
  */
-export function getUsers(req, res) {
-    try {
-        Users.findAll().then((result) => {
-            res.status(200).send(apiSuccessHandler(200, null, result));
-        });
-    } catch (error) {
-        res.status(200).send(apiFailureHandler(500, null));
-    }
-}
+export default class UserController {
+    /**
+     * get users data
+     *
+     * @param req
+     * @param res
+     */
+    getUser(req, res) {
+        const {userId} = req;
 
-/**
- * insert user data
- *
- * @param req
- * @param res
- */
-export function createUser(req, res) {
-    try {
-        const {body: {firstName, lastName, email, password}} = req;
-        if (!firstName || !lastName || !email || !password) {
-            res.status(200).send(apiFailureHandler(400, 'Field required: firstName, lastName, email and password.'));
+        try {
+            Users.findOne({
+                where: {
+                    id: userId
+                },
+                attributes: {exclude: ['salt', 'password']}
+            }).then((result) => {
+                if (result) {
+                    return apiSuccessHandler(res, 200, null, result);
+
+                } else {
+                    return apiFailureHandler(res, 400, 'Invalid user.');
+                }
+            });
+        } catch (error) {
+            return apiFailureHandler(res, 500, null, error);
+        }
+    }
+
+    /**
+     * update user data
+     *
+     * @param req
+     * @param res
+     */
+    async updateUser(req, res) {
+        const {userId} = req;
+        let {body: userData} = req;
+
+        const userUpdateFields = ['firstName', 'lastName', 'mobileNumber', 'address', 'city', 'postalCode', 'status'];
+        await Object.keys(userData).map(function (key) {
+            if (userUpdateFields.indexOf(key) === -1) {
+                delete userData[key];
+            }
+        });
+
+        if (!userData || Object.keys(userData).length === 0) {
+            return apiFailureHandler(res, 400, 'User data not exist.');
         }
 
-        // insert data
-        Users.findOrCreate({
-            where: {email},
-            defaults: {firstName, lastName, email, password}
-        }).then((result) => {
-            res.status(200).send(apiSuccessHandler(200, null, result));
-        });
-    } catch (error) {
-        res.status(200).send(apiFailureHandler(500, null));
+        try {
+            Users.update(userData, {
+                where: {id: userId},
+            }).then((result) => {
+                if (result) {
+                    return apiSuccessHandler(res, 200, 'User data updated.');
+                }
+
+                return apiFailureHandler(res, 400, 'User data not updated. Please try again.');
+            });
+        } catch (error) {
+            return apiFailureHandler(res, 500, null, error);
+        }
     }
 }
-
-export default {getUsers, createUser};

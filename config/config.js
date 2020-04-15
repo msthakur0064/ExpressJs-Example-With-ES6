@@ -17,7 +17,12 @@ const config = {
         username: process.env.DB_USERNAME,
         password: process.env.DB_PASSWORD,
         migrate: process.env.DB_MIGRATE,
+    },
+    jwt: {
+        secretKey: process.env.JWT_SECRET_KEY,
+        expire: process.env.JWT_EXPIRE,
     }
+
 
 }
 

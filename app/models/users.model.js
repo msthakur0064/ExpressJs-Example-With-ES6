@@ -20,14 +20,23 @@ export default function (sequelize, DataTypes) {
             type: DataTypes.STRING(180),
             allowNull: false
         },
+        salt: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
         password: {
-            type: DataTypes.STRING(255),
+            type: DataTypes.TEXT,
             allowNull: false
         },
         mobileNumber: {
             type: DataTypes.STRING(15),
             allowNull: true,
             field: 'mobile_number'
+        },
+        profileImage: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            field: 'profile_image'
         },
         address: {
             type: DataTypes.TEXT,

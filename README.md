@@ -7,6 +7,7 @@
 
 #### Installation steps
 - Take clone 
+- Install PostgreSQL/MySql database
 - First run `npm install` command
 - Create copy of `env.example` file with `.env` name
 - Set credential in `.env` file
@@ -21,16 +22,7 @@
 - Authentication APIs(Token is not required)
     - Registration
     - Login
-    - Forgot Password
     
 - Users APIs(Token is required)
+    - Get User
     - Update User
-    - Change Password
-    - Change Status
-    - Delete User
-    
-- Project APIs(Token is required)
-    - Create Project
-    - Update Project    
-    - Change Project Status
-    - Delete Project
