@@ -75,7 +75,6 @@ export default class UserController {
         const {userId} = req;
 
         try {
-
             Users.destroy({
                 where: {id: userId},
             }).then((result) => {

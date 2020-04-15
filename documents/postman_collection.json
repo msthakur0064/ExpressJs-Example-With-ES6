@@ -18,17 +18,17 @@
 							"urlencoded": [
 								{
 									"key": "firstName",
-									"value": "First",
+									"value": "First1",
 									"type": "text"
 								},
 								{
 									"key": "lastName",
-									"value": "Last",
+									"value": "Last1",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "fl@test.com",
+									"value": "fl@test.com1",
 									"type": "text"
 								},
 								{
@@ -64,7 +64,7 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "fl@test.com",
+									"value": "fl@test.com1",
 									"type": "text"
 								},
 								{
@@ -97,7 +97,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYiLCJlbWFpbCI6ImZsQHRlc3QuY29tIiwiZmlyc3ROYW1lIjoiRmlyc3QiLCJsYXN0TmFtZSI6Ikxhc3QiLCJpYXQiOjE1ODY5NDg0ODQsImV4cCI6MTU4Njk1MjA4NH0.UXvxmfDvFDw0Zn9BQaO5o708hzmrQXTGhR-hWftFm2E",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgiLCJlbWFpbCI6ImZsQHRlc3QuY29tMSIsImZpcnN0TmFtZSI6IkZpcnN0MSIsImxhc3ROYW1lIjoiTGFzdDEiLCJpYXQiOjE1ODY5NjE3MzQsImV4cCI6MTU4Njk2NTMzNH0.15quVid7W0Ga8HKaW6HuzqBD-1kK_sCmdbFTZqmkUO4",
 								"type": "text"
 							}
 						],
@@ -136,7 +136,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYiLCJlbWFpbCI6ImZsQHRlc3QuY29tIiwiZmlyc3ROYW1lIjoiRmlyc3QiLCJsYXN0TmFtZSI6Ikxhc3QiLCJpYXQiOjE1ODY5NDg0ODQsImV4cCI6MTU4Njk1MjA4NH0.UXvxmfDvFDw0Zn9BQaO5o708hzmrQXTGhR-hWftFm2E",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgiLCJlbWFpbCI6ImZsQHRlc3QuY29tMSIsImZpcnN0TmFtZSI6IkZpcnN0MSIsImxhc3ROYW1lIjoiTGFzdDEiLCJpYXQiOjE1ODY5NjE3MzQsImV4cCI6MTU4Njk2NTMzNH0.15quVid7W0Ga8HKaW6HuzqBD-1kK_sCmdbFTZqmkUO4",
 								"type": "text"
 							}
 						],
@@ -175,11 +175,38 @@
 								},
 								{
 									"key": "status",
-									"value": "2",
+									"value": "12",
 									"type": "text"
 								}
 							]
 						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgiLCJlbWFpbCI6ImZsQHRlc3QuY29tMSIsImZpcnN0TmFtZSI6IkZpcnN0MSIsImxhc3ROYW1lIjoiTGFzdDEiLCJpYXQiOjE1ODY5NjE3MzQsImV4cCI6MTU4Njk2NTMzNH0.15quVid7W0Ga8HKaW6HuzqBD-1kK_sCmdbFTZqmkUO4",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:3000/api/v1/user",
 							"protocol": "http",
@@ -220,7 +247,7 @@
 				}
 			],
 			"protocolProfileBehavior": {}
-		}
+		}		
 	],
 	"protocolProfileBehavior": {}
 }
