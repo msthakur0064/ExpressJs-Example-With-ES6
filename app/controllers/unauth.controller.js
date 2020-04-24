@@ -1,8 +1,8 @@
 import crypto from 'crypto';
 
-import configuredDB from '../../config/database.js';
-import {apiSuccessHandler, apiFailureHandler} from '../helpers/global.helper.js';
-import {passwordEncode, generateJwtToken} from '../helpers/auth.helper.js';
+import configuredDB from '../config/database';
+import {apiSuccessHandler, apiFailureHandler} from '../helpers/global.helper';
+import {passwordEncode, generateJwtToken} from '../helpers/auth.helper';
 
 const {Users} = configuredDB;
 

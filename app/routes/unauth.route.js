@@ -1,6 +1,6 @@
 import express from 'express';
 
-import UnauthController from '../controllers/unauth.controller.js';
+import UnauthController from '../controllers/unauth.controller';
 
 const router = new express.Router();
 const unauthController = new UnauthController();

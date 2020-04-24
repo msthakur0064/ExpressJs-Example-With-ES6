@@ -1,5 +1,5 @@
-import statusCodes from './statusCodes.js';
-import config from "../../config/config.js";
+import statusCodes from './statusCodes';
+import config from "../config/config";
 
 /**
  * success API response

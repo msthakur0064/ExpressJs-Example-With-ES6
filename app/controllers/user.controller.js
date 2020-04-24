@@ -1,5 +1,5 @@
-import {apiSuccessHandler, apiFailureHandler} from '../helpers/global.helper.js';
-import configuredDB from '../../config/database.js';
+import {apiSuccessHandler, apiFailureHandler} from '../helpers/global.helper';
+import configuredDB from '../config/database';
 
 const {Users} = configuredDB;
 

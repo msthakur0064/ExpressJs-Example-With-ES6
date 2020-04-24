@@ -1,8 +1,7 @@
 import Sequelize from 'sequelize';
-import chalk from 'chalk';
 
-import config from './config.js';
-import models from '../app/models/index.model.js';
+import config from './config';
+import models from '../models/index.model';
 
 let sequelize = new Sequelize(
     config.db.database,
@@ -11,7 +10,7 @@ let sequelize = new Sequelize(
     {
         host: config.db.host,
         dialect: config.db.connection,
-        logging: true,
+        logging: (config.debug == 'true') ? true : false,
         pool: {
             max: 5,
             min: 0,
@@ -23,6 +22,10 @@ let sequelize = new Sequelize(
             freezeTableName: true,
             underscored: true
         },
+        dialectOptions: {
+            useUTC: (config.timezone == 'UTC') ? true : false,
+        },
+        timezone: config.timezone
     },
 );
 
@@ -30,10 +33,10 @@ let sequelize = new Sequelize(
 sequelize.authenticate()
     .then(async function (err) {
         await sequelize.sync();
-        console.log(`${chalk.green('>> Connection has been established successfully.')}`);
+        console.info(`${'>> Connection has been established successfully.'}`);
     })
     .catch(function (err) {
-        console.log(`${chalk.red('>> Unable to connect to the database:')}`, err);
+        console.error(`${'>> Unable to connect to the database:'}`, err);
     });
 
 // return model configuration

@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 
-// require and configure dotenv, will load vars in .env in PROCESS.ENV
+// configure dotenv, will load vars in .env in PROCESS.ENV
 dotenv.config();
 
 const config = {
@@ -9,6 +9,7 @@ const config = {
     debug: process.env.APP_DEBUG,
     url: process.env.APP_URL,
     port: process.env.APP_PORT,
+    timezone: process.env.APP_TIMEZONE,
     db: {
         connection: process.env.DB_CONNECTION,
         host: process.env.DB_HOST,
@@ -22,8 +23,6 @@ const config = {
         secretKey: process.env.JWT_SECRET_KEY,
         expire: process.env.JWT_EXPIRE,
     }
-
-
 }
 
 export default config;

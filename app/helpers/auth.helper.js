@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 
-import config from "../../config/config.js";
+import config from "../config/config";
 
 /**
  * encode password

@@ -1,4 +1,4 @@
-import usersModel from './users.model.js';
+import usersModel from './users.model';
 
 let db = {};
 export default {

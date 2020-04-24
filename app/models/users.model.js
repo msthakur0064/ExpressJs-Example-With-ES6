@@ -52,7 +52,7 @@ export default function (sequelize, DataTypes) {
             field: 'postal_code'
         },
         status: {
-            type: DataTypes.INTEGER(6),
+            type: DataTypes.SMALLINT,
             allowNull: false,
             defaultValue: '1',
             comment: '1=Active, 2=Inactive'

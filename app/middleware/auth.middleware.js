@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-import {apiFailureHandler} from '../helpers/global.helper.js';
-import config from "../../config/config.js";
-import configuredDB from "../../config/database.js";
+import {apiFailureHandler} from '../helpers/global.helper';
+import config from "../config/config";
+import configuredDB from "../config/database";
 
 const {Users} = configuredDB;
 
@@ -14,7 +14,7 @@ const {Users} = configuredDB;
  * @param next
  * @returns {Promise<{}>}
  */
-export default async function auth(req, res, next) {
+export default async (req, res, next) => {
     try {
         // Gather the jwt access token from the request header
         const authHeader = req.headers.authorization;
