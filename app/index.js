@@ -6,7 +6,7 @@ import config from './config/config';
 const server = http.Server(app);
 
 server.listen(config.port, () => {
-    if (config.env == 'production' || config.env == 'development' || config.env == 'testing') {
+    if (config.env == 'production' || config.env == 'development' || config.env == 'test') {
         console.info(`
     =================================================================
 

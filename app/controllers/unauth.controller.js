@@ -1,10 +1,10 @@
 import crypto from 'crypto';
 
-import configuredDB from '../config/database';
+import model from '../config/model';
 import {apiSuccessHandler, apiFailureHandler} from '../helpers/global.helper';
 import {passwordEncode, generateJwtToken} from '../helpers/auth.helper';
 
-const {Users} = configuredDB;
+const {Users} = model;
 
 /**
  * auth controller

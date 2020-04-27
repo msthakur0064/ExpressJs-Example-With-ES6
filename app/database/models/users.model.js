@@ -8,13 +8,11 @@ export default function (sequelize, DataTypes) {
         },
         firstName: {
             type: DataTypes.STRING(255),
-            allowNull: false,
-            field: 'first_name'
+            allowNull: false
         },
         lastName: {
             type: DataTypes.STRING(255),
-            allowNull: false,
-            field: 'last_name'
+            allowNull: false
         },
         email: {
             type: DataTypes.STRING(180),
@@ -30,13 +28,11 @@ export default function (sequelize, DataTypes) {
         },
         mobileNumber: {
             type: DataTypes.STRING(15),
-            allowNull: true,
-            field: 'mobile_number'
+            allowNull: true
         },
         profileImage: {
             type: DataTypes.STRING(255),
-            allowNull: true,
-            field: 'profile_image'
+            allowNull: true
         },
         address: {
             type: DataTypes.TEXT,
@@ -48,8 +44,7 @@ export default function (sequelize, DataTypes) {
         },
         postalCode: {
             type: DataTypes.STRING(10),
-            allowNull: true,
-            field: 'postal_code'
+            allowNull: true
         },
         status: {
             type: DataTypes.SMALLINT,

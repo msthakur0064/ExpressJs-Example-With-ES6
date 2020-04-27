@@ -1,7 +1,7 @@
 import {apiSuccessHandler, apiFailureHandler} from '../helpers/global.helper';
-import configuredDB from '../config/database';
+import model from '../config/model';
 
-const {Users} = configuredDB;
+const {Users} = model;
 
 /**
  * user controller

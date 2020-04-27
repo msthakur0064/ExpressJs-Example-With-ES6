@@ -1,15 +1,16 @@
-import Sequelize from 'sequelize';
-
 import config from './config';
-import models from '../models/index.model';
 
-let sequelize = new Sequelize(
-    config.db.database,
-    config.db.username,
-    config.db.password,
-    {
+const env = process.env.APP_ENV;
+
+export default {
+    [env]: {
         host: config.db.host,
+        database: config.db.database,
+        username: config.db.username,
+        password: config.db.password,
         dialect: config.db.connection,
+        port: config.db.port,
+        migrationStorageTableName: 'sequelizeMeta',
         logging: (config.debug == 'true') ? true : false,
         pool: {
             max: 5,
@@ -20,25 +21,11 @@ let sequelize = new Sequelize(
             paranoid: true,
             timestamps: true,
             freezeTableName: true,
-            underscored: true
+            underscored: false
         },
         dialectOptions: {
             useUTC: (config.timezone == 'UTC') ? true : false,
         },
         timezone: config.timezone
-    },
-);
-
-// db connection and migration
-sequelize.authenticate()
-    .then(async function (err) {
-        await sequelize.sync();
-        console.info(`${'>> Connection has been established successfully.'}`);
-    })
-    .catch(function (err) {
-        console.error(`${'>> Unable to connect to the database:'}`, err);
-    });
-
-// return model configuration
-const configuredDB = models.modelsInitialization(sequelize, Sequelize);
-export default configuredDB;
+    }
+};

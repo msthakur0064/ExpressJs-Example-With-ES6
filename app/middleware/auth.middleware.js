@@ -2,9 +2,9 @@ import jwt from 'jsonwebtoken';
 
 import {apiFailureHandler} from '../helpers/global.helper';
 import config from "../config/config";
-import configuredDB from "../config/database";
+import model from "../config/model";
 
-const {Users} = configuredDB;
+const {Users} = model;
 
 /**
  *  verify JWT token
