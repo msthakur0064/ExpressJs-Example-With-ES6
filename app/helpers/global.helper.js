@@ -10,7 +10,7 @@ import config from "../config/config";
  * @param data
  * @returns {{}}
  */
-export function apiSuccessHandler(res, code = 200, message = null, data = {}) {
+const apiSuccessHandler = (res, code = 200, message = null, data = {}) => {
     let status = statusCodes.data.find((data) => data.code === code);
     if (typeof status === 'undefined') {
         status = {
@@ -36,7 +36,7 @@ export function apiSuccessHandler(res, code = 200, message = null, data = {}) {
  * @param data
  * @returns {{}}
  */
-export function apiFailureHandler(res, code = 400, message = null, data = {}) {
+const apiFailureHandler = (res, code = 400, message = null, data = {}) => {
     let status = statusCodes.data.find((data) => data.code === code);
     if (typeof status === 'undefined') {
         status = {
@@ -62,4 +62,7 @@ export function apiFailureHandler(res, code = 400, message = null, data = {}) {
 
 }
 
-export default {apiSuccessHandler, apiFailureHandler};
+export default {
+    apiSuccessHandler,
+    apiFailureHandler
+};

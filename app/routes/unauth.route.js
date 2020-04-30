@@ -1,9 +1,8 @@
 import express from 'express';
 
-import UnauthController from '../controllers/unauth.controller';
+import unauthController from '../controllers/unauth.controller';
 
 const router = new express.Router();
-const unauthController = new UnauthController();
 
 router.post('/login', unauthController.login);
 router.post('/registration', unauthController.registration);

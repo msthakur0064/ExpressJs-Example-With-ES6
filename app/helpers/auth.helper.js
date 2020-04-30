@@ -10,12 +10,10 @@ import config from "../config/config";
  * @param password
  * @returns {string|boolean}
  */
-export function passwordEncode(salt, password) {
-
+const passwordEncode = (salt, password) => {
     if (salt && password) {
         const hashMd5 = crypto.createHash('md5').update(salt + password).digest("hex");
         const hasSha1 = crypto.createHash('sha1').update(hashMd5).digest("hex");
-
         return hasSha1;
     }
     return false;
@@ -28,7 +26,7 @@ export function passwordEncode(salt, password) {
  * @param password
  * @returns {string|boolean}
  */
-export function generateJwtToken(user) {
+const generateJwtToken = (user) => {
     if (user) {
         let userData = {};
         userData.id = user.id;
@@ -40,4 +38,7 @@ export function generateJwtToken(user) {
     return false;
 }
 
-export default {passwordEncode, generateJwtToken};
+export default {
+    passwordEncode,
+    generateJwtToken
+};

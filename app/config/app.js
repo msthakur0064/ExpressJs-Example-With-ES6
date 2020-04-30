@@ -2,7 +2,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import routes from '../routes/index.route';
-import {apiFailureHandler} from '../helpers/global.helper';
+import globalHelper from '../helpers/global.helper';
+
+const {apiFailureHandler} = globalHelper;
 
 const app = express();
 

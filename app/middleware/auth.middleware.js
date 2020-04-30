@@ -1,9 +1,10 @@
 import jwt from 'jsonwebtoken';
 
-import {apiFailureHandler} from '../helpers/global.helper';
+import globalHelper from '../helpers/global.helper';
 import config from "../config/config";
 import model from "../config/model";
 
+const {apiFailureHandler} = globalHelper;
 const {Users} = model;
 
 /**

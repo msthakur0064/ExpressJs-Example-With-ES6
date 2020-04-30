@@ -1,4 +1,4 @@
-export default {
+const statusCodes = {
     data: [
         {
             "code": 100,
@@ -226,3 +226,5 @@ export default {
         }
     ]
 }
+
+export default statusCodes;
