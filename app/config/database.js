@@ -1,9 +1,10 @@
 import config from './config';
 
-const env = process.env.APP_ENV;
+const environments = ['development', 'test', 'production'];
+let database = {};
 
-export default {
-    [env]: {
+environments.forEach(env => {
+    database[env] = {
         host: config.db.host,
         database: config.db.database,
         username: config.db.username,
@@ -28,4 +29,6 @@ export default {
         },
         timezone: config.timezone
     }
-};
+});
+
+export default database;

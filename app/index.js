@@ -6,11 +6,11 @@ import config from './config/config';
 const server = http.Server(app);
 
 server.listen(config.port, () => {
-    if (config.env == 'production' || config.env == 'development' || config.env == 'test') {
+    if (config.env == 'development' || config.env == 'test' || config.env == 'production') {
         console.info(`
     =================================================================
 
-       Server started on port ${config.url}:${config.port} (${config.env})
+       Server started on port ${config.url} (${config.env})
 
     =================================================================
     `);

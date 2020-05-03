@@ -1,15 +1,18 @@
 import express from 'express';
 
-import auth from '../middleware/auth.middleware';
-import unauthRoute from './unauth.route';
+// include middleware for authentication
+import authMiddleware from '../middleware/auth.middleware';
+
+// include routes
+import unAuthRoute from './unAuth.route';
 import userRoute from './user.route';
 
 const router = express.Router();
 
 // without authentication
-router.use('/', unauthRoute);
+router.use('/', unAuthRoute);
 
 // with middleware authentication
-router.use('/user', auth, userRoute);
+router.use('/user', authMiddleware, userRoute);
 
 export default router;

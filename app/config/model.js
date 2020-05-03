@@ -16,5 +16,5 @@ sequelize.authenticate()
     });
 
 // return model configuration
-const configuredDB = models.modelsInitialization(sequelize, Sequelize);
-export default configuredDB;
+const model = models.modelsInitialization(sequelize, Sequelize);
+export default model;
