@@ -1,13 +1,20 @@
-'use strict';
-
 export default {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('users', {
+        return queryInterface.createTable('user', {
             id: {
                 type: Sequelize.BIGINT,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true
+            },
+            roleId: {
+                type: Sequelize.BIGINT,
+                references: {
+                    model: 'role',
+                    key: 'id'
+                },
+                onDelete: 'CASCADE',
+                allowNull: false,
             },
             firstName: {
                 type: Sequelize.STRING(255),
@@ -69,8 +76,7 @@ export default {
             schema: 'public'
         });
     },
-
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('users');
+        return queryInterface.dropTable('user');
     }
 };

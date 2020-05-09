@@ -2,7 +2,7 @@ import globalHelper from '../helpers/global.helper';
 import model from '../config/model';
 
 const {apiSuccessHandler, apiFailureHandler} = globalHelper;
-const {usersModel} = model;
+const {userModel} = model;
 
 /**
  * get users data
@@ -43,7 +43,7 @@ const updateUser = async (req, res) => {
             return apiFailureHandler(req, res, 400, 'User data not exist.');
         }
 
-        let result = await usersModel.update(userData, {
+        let result = await userModel.update(userData, {
             where: {
                 id: userId
             },
@@ -66,7 +66,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     try {
         const {userId} = req;
-        let result = await usersModel.destroy({
+        let result = await userModel.destroy({
             where: {id: userId},
         });
         if (result) {

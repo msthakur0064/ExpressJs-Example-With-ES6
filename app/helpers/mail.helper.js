@@ -40,7 +40,7 @@ const sendMail = (template, subject, toMail, data = {}, attachments = []) => {
         const mailOptions = {
             from: config.mail.from,
             to: toMail,
-            subject: subject,
+            subject: config.name + ': ' + subject,
             html: templateView,
             attachments,
         };

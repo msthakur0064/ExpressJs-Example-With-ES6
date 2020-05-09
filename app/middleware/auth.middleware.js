@@ -5,7 +5,7 @@ import config from "../config/config";
 import model from "../config/model";
 
 const {apiFailureHandler} = globalHelper;
-const {usersModel} = model;
+const {userModel} = model;
 
 /**
  * get user data for token verify
@@ -21,7 +21,7 @@ const getUser = async (req, res, next, err, user) => {
         }
         if (user.id && Number.isInteger(parseInt(user.id))) {
             // check user is valid or not
-            let result = await usersModel.findOne({
+            let result = await userModel.findOne({
                 where: {
                     id: user.id
                 },

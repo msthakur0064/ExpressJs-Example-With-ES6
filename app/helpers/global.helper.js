@@ -26,7 +26,7 @@ const apiSuccessHandler = (req, res, code = 200, message = null, data = {}) => {
     apiResponse.message = (message) ? message : status.message;
     apiResponse.data = data;
     return res.status(200).send(apiResponse);
-}
+};
 
 /**
  * fail API response
@@ -62,9 +62,21 @@ const apiFailureHandler = (req, res, code = 400, message = null, data = {}) => {
     } else {
         return res.status(200).send(apiResponse);
     }
-}
+};
+
+/**
+ * convert camel case to string
+ *
+ * @param text
+ * @returns {string}
+ */
+const camelCaseToStr = (text) => {
+    const result = text.replace(/([A-Z])/g, " $1");
+    return result.charAt(0).toUpperCase() + result.slice(1);
+};
 
 export default {
     apiSuccessHandler,
-    apiFailureHandler
+    apiFailureHandler,
+    camelCaseToStr
 };
