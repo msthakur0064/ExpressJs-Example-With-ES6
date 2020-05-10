@@ -11,6 +11,8 @@
 - First run `npm install` command
 - Create copy of `env.example` file with `.env` name
 - Set credential in `.env` file
+- run migration `npx sequelize-cli db:migrate`
+- run seeder `npx sequelize-cli db:seed:all`
 - Run project 'npm start'
 
 #### Details of the example
@@ -30,4 +32,4 @@
     - Delete User
 
 
-NOTE: Postman collection and database in `documents` folder.
+NOTE: open `postman_collection.json` for Postman collection.
