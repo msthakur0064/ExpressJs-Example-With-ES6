@@ -17,7 +17,7 @@
 
 #### Details of the example
 - Used `sequelize` ORM.
-- User `json web token` for authentication.
+- Used `json web token` for authentication.
 - User can login or registration by using APIs.
 - User modify our details after login(With JWT token).
 
